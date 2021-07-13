@@ -1,0 +1,266 @@
+<!-- Large modal -->
+<button type="button" (click)=" this.limpiar()"   class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg"><i
+    class="fa fa-plus-circle" aria-hidden="true"></i> REGISTRAR DOCENTE</button>
+
+<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="exampleModalLongTitle">Registrar Docente Participante</h2>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-4 col-sm-6">
+              <label for="exampleInputEmail1">DNI:</label>
+              <input [(ngModel)]="DocenteModel.dni" value="a" name="telefono" class="form-control"
+                placeholder="N° de DNI">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-12">
+              <br>
+              <div class="row">
+                <div class="col-8 col-sm-6">
+                  <label for="exampleInputEmail1">NOMBRE:</label>
+                  <input [(ngModel)]="DocenteModel.nombres" name="telefono" class="form-control"
+                    placeholder="Ingrese su nombre">
+                </div>
+                <div class="col-4 col-sm-6">
+                  <label for="exampleInputEmail1">APELLIDOS:</label>
+                  <input [(ngModel)]="DocenteModel.apellidos" name="telefono" class="form-control"
+                    placeholder="Ingrese sus apellidos">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-12">
+              <br>
+              <div class="row">
+                <div class="col-8 col-sm-6">
+
+                  <label for="exampleInputEmail1">N° DE CELULAR</label>
+                  <input [(ngModel)]="DocenteModel.celular" name="telefono" class="form-control"
+                    placeholder="N° de celular">
+                </div>
+                <div class="col-4 col-sm-6">
+
+                  <label for="exampleInputEmail1">N° TELEFONO FIJO</label>
+                  <input [(ngModel)]="DocenteModel.telefono_fijo" name="telefono" class="form-control"
+                    placeholder="N° de telefono fijo">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-12">
+              <br>
+              <div class="row">
+                <div class="col-8 col-sm-6">
+                  <label for="exampleInputEmail1">CAT1</label>
+                  <input [(ngModel)]="DocenteModel.cat_actual " name="telefono" class="form-control"
+                    placeholder="***************">
+                </div>
+                <div class="col-4 col-sm-6">
+
+                  <label for="exampleInputEmail1">CAT2</label>
+                  <input [(ngModel)]="DocenteModel.cat_deceada " name="telefono" class="form-control"
+                    placeholder="***************">
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-12">
+              <br>
+              <div class="row">
+                <div class="col-8 col-sm-6">
+                  <label for="exampleInputEmail1">CORREO</label>
+                  <input [(ngModel)]="DocenteModel.correo" type="email" name="telefono" class="form-control"
+                    placeholder="Example@upeu.edu.pe">
+                </div>
+                <div class="col-4 col-sm-6">
+                  <label for="exampleInputEmail1">CONTRASEÑA</label>
+                  <input [(ngModel)]="DocenteModel.password " name="telefono" class="form-control"
+                    placeholder="***************">
+                </div>
+              </div>
+
+
+
+
+            </div>
+          </div>
+        </div>
+      </div>
+      <br>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="agregarPersona()" id="cancelar"
+          type="submit">Guardar</button>
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+<br>
+<div class="card  " style="border-radius: 10px;">
+  <div class="card-header" style="background-color: #6c1a3f; border-start-end-radius: 10px;
+    border-start-start-radius: 10px; ">
+    <h3 style="color:rgb(255, 255, 255);"> DOCENTES PARTICIPANTES</h3>
+  </div>
+  <div class="card-body text-danger">
+    <table class="table">
+      <thead class="table-light">
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">DNI</th>
+          <th scope="col">DOCENTE</th>
+          <th scope="col">CAT. ACTUAL</th>
+          <th scope="col">CAT. DECEADA</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let docente of docentes let i=index">
+          <th scope="row">{{i+1}}</th>
+          <td>{{docente.dni}}</td>
+          <td>{{docente.nombre_completo}}</td>
+          <td>{{docente.categoria_actual}}</td>
+          <td>{{docente.categoria_deceada}}</td>
+          <td>
+
+            <button type="button" class="btn btn-outline-danger" (click)="eliminar(docente.idusuario)"><i
+                class="fa fa-trash" aria-hidden="true"></i></button>
+
+
+
+            <button type="button" class="btn btn-outline-secondary" data-toggle="modal"
+              data-target=".bd-f-modal-lg" (click)=" this.cargar_docente(docente.idusuario)">
+              <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+            </button>
+
+            <div class="modal fade bd-f-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+              aria-hidden="true">
+              <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h2 class="modal-title" id="exampleModalLongTitle">EDITAR DOCENTE PARTICIPANTE</h2>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+
+                  <div class="modal-body">
+                    <div class="container-fluid">
+                      <div class="row">
+                        <div class="col-4 col-sm-6">
+                          <label for="exampleInputEmail1">DNI:</label>
+                          <input [(ngModel)]="DocenteModel.dni" value="a" name="telefono" class="form-control"
+                            placeholder="N° de DNI">
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-sm-12">
+                          <br>
+                          <div class="row">
+                            <div class="col-8 col-sm-6">
+                              <label for="exampleInputEmail1">NOMBRE:</label>
+                              <input [(ngModel)]="DocenteModel.nombres" name="telefono" class="form-control"
+                                placeholder="Ingrese su nombre">
+                            </div>
+                            <div class="col-4 col-sm-6">
+                              <label for="exampleInputEmail1">APELLIDOS:</label>
+                              <input [(ngModel)]="DocenteModel.apellidos" name="telefono" class="form-control"
+                                placeholder="Ingrese sus apellidos">
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="row">
+                        <div class="col-sm-12">
+                          <br>
+                          <div class="row">
+                            <div class="col-8 col-sm-6">
+
+                              <label for="exampleInputEmail1">N° DE CELULAR</label>
+                              <input [(ngModel)]="DocenteModel.celular" name="telefono" class="form-control"
+                                placeholder="N° de celular">
+                            </div>
+                            <div class="col-4 col-sm-6">
+
+                              <label for="exampleInputEmail1">N° TELEFONO FIJO</label>
+                              <input [(ngModel)]="DocenteModel.telefono_fijo" name="telefono" class="form-control"
+                                placeholder="N° de telefono fijo">
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="row">
+                        <div class="col-sm-12">
+                          <br>
+                          <div class="row">
+                            <div class="col-8 col-sm-6">
+                              <label for="exampleInputEmail1">CAT1</label>
+                              <input [(ngModel)]="DocenteModel.cat_actual " name="telefono" class="form-control"
+                                placeholder="***************">
+                            </div>
+                            <div class="col-4 col-sm-6">
+
+                              <label for="exampleInputEmail1">CAT2</label>
+                              <input [(ngModel)]="DocenteModel.cat_deceada " name="telefono" class="form-control"
+                                placeholder="***************">
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-sm-12">
+                          <br>
+                          <div class="row">
+                            <div class="col-8 col-sm-6">
+                              <label for="exampleInputEmail1">CORREO</label>
+                              <input [(ngModel)]="DocenteModel.correo" type="email" name="telefono" class="form-control"
+                                placeholder="Example@upeu.edu.pe">
+                            </div>
+                            <div class="col-4 col-sm-6">
+                              <label for="exampleInputEmail1">CONTRASEÑA</label>
+                              <input [(ngModel)]="DocenteModel.password " name="telefono" class="form-control"
+                                placeholder="***************">
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <br>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="editarPersona(docente.idusuario)"
+                      id="cancelar" type="submit">Guardar</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+          </td>
+        </tr>
+
+
+      </tbody>
+
+    </table>
+
+
+  </div>
+</div>
