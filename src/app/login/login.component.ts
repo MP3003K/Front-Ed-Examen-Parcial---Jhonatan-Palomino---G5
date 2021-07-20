@@ -39,7 +39,7 @@ export class LoginComponent implements OnInit {
          console.log(res);
          swal.fire(
           'Credenciales exitosos!',
-          'Bienvenidos a CaTDoc',
+          'Bienvenidos',
           'success') 
          localStorage.setItem('token', res.accessToken);
          this.router.navigate(['/dashboard']);

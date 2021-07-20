@@ -28,7 +28,9 @@ though this can be any filePath
 */
 const filePath = path.join(__dirname, 'prueba.jpg');
 
- function uploadFile() {
+uploadFile();
+async function uploadFile() {
+  console.log('aqui');
   try {
     const response = await drive.files.create({
       requestBody: {
@@ -46,7 +48,6 @@ const filePath = path.join(__dirname, 'prueba.jpg');
     console.log(error.message);
   }
 }
-
 
 
 async function deleteFile() {

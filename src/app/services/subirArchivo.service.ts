@@ -5,12 +5,23 @@ import { HttpClient, HttpHeaders, HttpRequest, HttpEvent } from '@angular/common
 import Swal from 'sweetalert2';
 import { map } from 'jquery';
 import { catchError } from 'rxjs/operators';
+import { Archivo } from '../models/archivo';
 
 @Injectable({
   providedIn: 'root'
 })
 
-export class CU2Service {
+export class archivoServices {
 
+
+  
+  private HttpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' });
+  private url: string = 'http://localhost:3000/examen/';
+
+  constructor(private http: HttpClient) { }
+
+  getDocentesParticipantes(): Observable<Archivo[]> {
+    return this.http.get<Archivo[]>(this.url + '/list_archivos');
+  }
 
 }
