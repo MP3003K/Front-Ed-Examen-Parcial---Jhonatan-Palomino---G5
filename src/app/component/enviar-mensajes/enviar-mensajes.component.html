@@ -1,0 +1,16 @@
+<br>
+<label for="exampleInputEmail1">DE:</label>
+<input [(ngModel)]="MensajeModel.correo_emisor " name="telefono" class="form-control" placeholder="email@upeu.edu.pe">
+<br>
+<label for="exampleInputEmail1">PARA:</label>
+<input [(ngModel)]="MensajeModel.correo_destinatario " name="telefono" class="form-control" placeholder="email@upeu.edu.pe">
+<br>
+<label for="exampleInputEmail1">ASUNTO</label>
+<input [(ngModel)]="MensajeModel.asunto " name="telefono" class="form-control" placeholder="Titulo">
+<br>
+<label for="exampleInputEmail1">MENSAJE</label>
+<input [(ngModel)]="MensajeModel.mensaje " name="telefono" class="form-control" placeholder="mensaje">
+
+<br>
+<button type="button" class="btn btn-primary" data-dismiss="modal" (click)="enviar_mensaje()"
+id="cancelar" type="submit">Guardar</button>

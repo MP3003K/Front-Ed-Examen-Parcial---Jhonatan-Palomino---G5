@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AporteFormComponent } from './component/aporte-form/aporte-form.component';
 import { AuthGuard } from './guards/auth.guard';
 
 
